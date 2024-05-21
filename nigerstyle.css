@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.rotating {
+    position: absolute;
+    animation: moveRight 3s linear infinite alternate, moveDown 3s linear infinite alternate;
+}
+
+@keyframes moveRight {
+    from {
+        left: 0;
+    }
+    to {
+        left: calc(100vw - 100px);
+    }
+}
+
+@keyframes moveDown {
+    from {
+        top: 0;
+    }
+    to {
+        top: calc(100vh - 100px);
+    }
+}

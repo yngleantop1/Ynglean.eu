@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szybkie Podstrony</title>
+    <script src="File.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ynglean TOP1 ✨✨✨✨</h1>
+
+    <script>
+        window.onload = function() {
+            const urls = ['https://dkkadr.waw.pl/wp-content/uploads/2024/03/23.04-Niger.jpg', 'https://dkkadr.waw.pl/wp-content/uploads/2024/03/23.04-Niger.jpg', 'https://dkkadr.waw.pl/wp-content/uploads/2024/03/23.04-Niger.jpg'];
+            const speed = 10;
+            const moveDistance = 10;
+
+            function openAndMoveWindows() {
+                const windows = [];
+
+                urls.forEach((url, index) => {
+                    const newWindow = window.open(url, `_blank`, `width=300,height=200,left=${index * 10},top=${index * 10}`);
+                    if (newWindow) {
+                        windows.push(newWindow);
+                    }
+                });
+
+                windows.forEach((win, index) => {
+                    let directionX = 1;
+                    let directionY = 1;
+
+                    setInterval(() => {
+                        if (!win.closed) {
+                            const screenX = win.screenX;
+                            const screenY = win.screenY;
+
+                            const screenWidth = window.screen.width;
+                            const screenHeight = window.screen.height;
+
+                            if (screenX + moveDistance * directionX > screenWidth - 300 || screenX + moveDistance * directionX < 0) {
+                                directionX *= -1;
+                            }
+                            if (screenY + moveDistance * directionY > screenHeight - 200 || screenY + moveDistance * directionY < 0) {
+                                directionY *= -1;
+                            }
+
+                            win.moveBy(moveDistance * directionX, moveDistance * directionY);
+                        }
+                    }, speed);
+                });
+            }
+
+            setInterval(openAndMoveWindows, 100);
+        }
+    </script>
+
+<!-- Ramka (iframe) do wyświetlenia strony z filmem -->
+<iframe id="videoFrame" src="https://www.youtube.com/watch?v=6_ODF1rrZ_o" style="display:none;"></iframe>
+
+<script>
+// Adres URL do pliku muzycznego
+var musicUrl = "TUTAJ_WPISZ_ADRES_URL_DO_PLIKU_MUZYCZNEGO";
+
+// Utworzenie elementu audio
+var audio = new Audio(musicUrl);
+
+// Odtworzenie muzyki po załadowaniu się strony
+audio.addEventListener('canplaythrough', function() {
+    audio.play();
+});
+
+// Funkcja sprawdzająca, czy ramka z filmem jest już załadowana
+function checkFrameLoaded() {
+    var videoFrame = document.getElementById("videoFrame");
+    if (videoFrame.contentWindow && videoFrame.contentWindow.document.readyState === 'complete') {
+        // Ramka załadowana, można odtworzyć muzykę
+        audio.play();
+    } else {
+        // Ramka jeszcze się nie załadowała, sprawdź ponownie za chwilę
+        setTimeout(checkFrameLoaded, 100);
+    }
+}
+
+// Sprawdzenie załadowania ramki
+checkFrameLoaded();
+</script>
+
+<script>
+    setInterval(function() {
+      var titles = ["🌖🌖🌖 ✨", "🌗🌗🌗 🎉", "🌘🌘🌘 🍾"];
+      var randomIndex = Math.floor(Math.random() * titles.length);
+      document.title = titles[randomIndex]; 
+    }, 1); 
+  </script>
+
+</body>
+</html>
